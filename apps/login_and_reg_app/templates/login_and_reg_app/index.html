@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wall</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'login_and_reg_app/css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .mybody {
+            background-image: url("{% static 'login_and_reg_app/img/NinjaPurple.png' %}");
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+
+<body class="mybody">
+    <!-- Header toolbar -->
+    <div class="universalheader">
+        <div class="sidebyside">
+            <h3>Coding Dojo Wall</h3>
+        </div>
+        <div class="sidebyside fixedTopRight">
+            <table>
+                <tr class="table table-borderless">
+                    <td class="mediumtext">Welcome {{request.session.user}}!!</td>
+                    <td><a href="/logout" class="">Log Out</a></h3>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="wrapper">
+
+        <!-- Post a new message -->
+        <div class="sidetoside">
+            <h4>Post a Message</h4>
+            <form action="/post_message" method="POST">
+                {% csrf_token %}
+                <textarea class="textarea sidetoside" name="message" id="" cols="110" rows="10"></textarea>
+                <input class="right" type="submit" value="Post a Message">
+            </form>
+        </div>
+
+        <!-- Display all messages in descending cronological order -->
+        <div class="sidetoside">
+            {% for msg in all_messages %}
+            <div class="sidetoside "><span class="largetext">{{msg.user_id.first_name}}</span> - {{msg.created_at}}
+            </div>
+            <p class="message">{{msg.message}}</p>
+            <div>
+                {% for comm in all_comments %}
+                    {% if comm.message_id_id == msg.id %}
+                        <p class="mediumtext comment">{{comm.user_id.first_name}} @ {{comm.user_id.created_at}}:</p>
+                        <p class="comment">{{comm.comment}}</p>
+                    {% endif %}
+                {% endfor %}
+                <!-- Post a new comment for THIS message -->
+                <div class="sidetoside">
+                    <form action="/post_comment" method="POST">
+                        {% csrf_token %}
+                        <label class="comment" for="comment">Post A Comment:</label>
+                        <textarea class="comment sidetoside" name="comment" id="" cols="80" rows="3"></textarea>
+                        <input type="hidden" name="message_id" value="{{msg.id}}">
+                        <input class="right" type="submit" value="Post a Comment">
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+
+</html>

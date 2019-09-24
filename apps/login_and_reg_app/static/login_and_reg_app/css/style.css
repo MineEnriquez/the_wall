@@ -1,0 +1,100 @@
+.fixedTopRight{
+    float: right;
+    vertical-align: top;
+    }
+    
+    .universalheader
+    {
+        border: 5px solid lightgrey;
+        background: whitesmoke;
+        
+    }
+    .wrapper {
+        width: 900px;
+        margin: 50px auto;
+        padding: 30px;
+        background: whitesmoke;
+        border: 5px solid lightgrey;
+        opacity:0.8;
+    }
+    
+/* MESSAGES  */
+.single_indented{
+    margin-left: 40px;
+}
+.negative_indented{
+    margin-left: -40px;
+}
+    .accessible {
+    text-decoration: underline;
+    }
+    
+    .greentext {
+        color: green;
+    }
+    .tablegrid {
+        width: 350px;
+        height: 400px;
+        margin: 5px;
+        padding: 5px;
+        overflow: scroll;
+    }
+    .largetext {
+        font-size: x-large;
+        font-weight: 600;
+    }
+    .mediumtext{
+        font-size: large;
+        font-weight: 600
+    }
+    .dropdown {
+        margin: 10px 10px;
+        height: 40px;
+    }
+    
+    .sidebyside {
+        display: inline-block;
+    }
+    .top {
+        vertical-align: top;    
+    }
+    
+    .floatcenter{
+        margin: 20px 40%;
+    }
+    .centered {
+        width: 400px;
+        margin: 10px auto;
+        padding: 10px;
+    }
+    
+    .right{
+        float: right;
+        margin-right: 20px;
+    }
+    .recordinfo, .bookinfo {
+        width: 90%;
+        margin: 50px auto;
+        padding: 10px;  
+        text-align: left;
+        vertical-align: top;
+    }
+    
+    .textarea {
+        height: 200px; 
+    }
+    .sidetoside {
+        min-width: 90%;
+    }
+    .message{
+        width: 750px;
+        margin-left: 40px;
+    }
+    .comment{
+        width: 700px;
+        margin-left: 100px;
+    }
+    .LabelLetters{
+        font-size: larger;
+        font-weight: 600;
+    }
